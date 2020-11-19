@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //関数群
+    function tasu(a,b){ //第1引数,第2引数を渡す
+        const t = a + b; //計算させた結果を中の変数で受け取る ※関数内で宣言した変数は外部から参照できない
+        console.log(t); //コンソールに表示
+    }
+    function hiku(a,b){
+        const t = a - b;
+        console.log(t);
+    }
+    function kake(a,b){
+        const t = a * b;
+        console.log(t);
+    }
+    function waru(a,b){
+        const t = a / b;
+        console.log(t);
+    }
+    //実行群
+    tasu(10,10);
+    hiku(20,30);
+    kake(40,50);
+    waru(20,5);
+</script>
+</body>
+</html>

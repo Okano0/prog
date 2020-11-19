@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+
+<script>
+    //関数の中で処理が終わった瞬間に中の変数は全部消える。そうすると外に取り出したいとき出せないが、returnを使えば外に取り出すことが出来る。
+    //関数群
+    function tasu(a,b){ //第1引数,第2引数を渡す
+        const t = a + b; //計算させた結果を中の変数で受け取る
+        return t; //returnで関数の外に持っていく
+    }
+    function hiku(a,b){
+        const t = a - b;
+        return t;
+    }
+    function kake(a,b){
+        const t = a * b;
+        return t;
+    }
+    function waru(a,b){
+        const t = a / b;
+        return t;
+    }
+    //実行群
+    const a = tasu(10,10); //const aで受け取る用意して足し算の結果がaに入る
+    const b = hiku(20,30);
+    const c = kake(40,50);
+    const d = waru(20,5);
+    const t = a + b + c + d; //すべてを足してconst tで受け取る
+    document.querySelector("h1").innerHTML=t; //h1タグのところにinnerHTMLで結果を書き込む
+</script>
+</body>
+</html>

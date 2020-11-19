@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function rand(num){
+        const r = Math.ceil(Math.random()*num); //実行するところで毎回数字を変えることが出来る 渡されたのを＊3する
+        return r; //関数の外に出す
+    }
+    //実行群
+    console.log( rand(3) ); //returnで戻ってくるのを表示させる 3を渡す
+    console.log( rand(3) );
+    console.log( rand(3) );
+</script> 
+</body>
+</html>
