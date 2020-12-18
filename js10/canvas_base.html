@@ -10,9 +10,9 @@
     <section>
         <h1>Canvas</h1>
         <nav>
-            <input type="color" id="color" value="#ff0000"></inputtype>
+            <input type="color" id="col" value="#ff0000"></inputtype>
             <!-- 線の色を変更するカラーピッカーHTML要素[id="color"] -->
-            <input type="range" id="range" min="20" max="300" value="50">
+            <input type="range" id="ran" min="20" max="300" value="50">
             <!-- 線の太さを変更するスライダーHTML要素[id="range"] -->
             <button id="clear_btn">クリアー</button><!-- 描いたものを消す -->
         </nav>
@@ -21,13 +21,13 @@
 
     <script src="js/jquery-2.1.3.min.js"></script>
     <script>
-        
+
         //初期化(変数letで宣言)
         let canvas_mouse_event = false; //スイッチ [ true=線を引く, false=線は引かない ]  ＊＊＊
         let oldX = 0; //１つ前の座標を代入するための変数 1つ前の座標を保持
         let oldY = 0; //１つ前の座標を代入するための変数
-        let bold_line = $("#range").val(); //ラインの太さをここで指定[スライダー値をここに代入]
-        let color = $("#color").val(); //ラインの色をここで指定[カラーピッカー値をここに代入]
+        let bold_line = $("#ran").val(); //ラインの太さをここで指定[スライダー値をここに代入]
+        let color = $("#col").val(); //ラインの色をここで指定[カラーピッカー値をここに代入]
 
         //------------------------------------------------
         const can = $("#drowarea")[0]; //CanvasElement
@@ -55,8 +55,8 @@
             if(canvas_mouse_event==true){ //canvas_mouse_event==trueの時だけ描く
                 const px = e.offsetX; //mpousemoveした先でも次の座標を取る
                 const py = e.offsetY;
-                ctx.strokeStyle = color;
-                ctx.lineWidth = bold_line;
+                ctx.strokeStyle = $("#col").val();
+                ctx.lineWidth = $("#ran").val();
                 ctx.beginPath(); //初期化
                 ctx.lineJoin= "round"; //先を丸くする。これをしないでctx.lineWidth =20とか大きい値にすると滑らかにならない
                 ctx.lineCap = "round"; //先を丸くする
