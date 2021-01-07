@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const o1 = {
+            name:"yama",
+            email:"test@tet.jp",
+            address:"Tokyo"
+        };//まだ自分のブラウザの外に出れていない o1にオブジェクト変数3つもたせる
+
+        //JSON文字列（オブジェクトをテキスト化）ブラウザの外に出せる
+        const json = JSON.stringify(o1);//しかし、これを加えると上の｛｝のなかがそのまま入る
+        //localStorage.setItem("OBJ",o1);//配列のままいれるとlocalstorageだと文字が入っていかない。オブジェクト変数ではなくて文字列じゃないと入ってくれない 他のデータベースとかサーバにデータを送れない
+        localStorage.setItem("OBJ",json);//オブジェクト変数がテキスト化したものが入る
+
+        const val = localStorage.getItem("OBJ");
+        const obj = JSON.parse(val);//オブジェクトに戻す
+        console.log(val);//確認するとオブジェクトに戻らず文字列として出てる
+    </script>
+</body>
+</html>
