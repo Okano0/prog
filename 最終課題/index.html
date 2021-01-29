@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>～花育成日記～</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+<body>
+<header>
+<h1>～花育成日記～</h1>
+</header>
+<h4 id="text"></h4>
+<h6 id="text2"></h6>
+<main>
+    <input type="text" id="key">
+    <textarea id="memo"></textarea>
+    <ul>
+        <li id="save">Save</li>
+        <li id="clear">Clear</li>
+        <li id="pull">花占い</li>
+    </ul>
+    <p>✿これからの時期（春）に植えて夏に咲くおすすめの花占い</p>
+    <p id="echo"></p>
+    <p id="echo1"></p>
+</main>
+<table id="list">
+<!-- ここにappendで追加データが挿入される -->
+</table>
+<script>
+$(function(){
+date = new Date ();
+mon=date.getMonth()+1;
+da=date.getDate();
+data = new Array();
+i=0;
+data[i] = new Array ("1", "1", "フクジュソウ:幸せを招く,回想");i++;
+data[i] = new Array ("1", "2", "ロウバイ:先導,先見");i++;
+data[i] = new Array ("1", "3", "マツユキソウ:希望,慰め");i++;
+data[i] = new Array ("1", "4", "ヒヤシンス:心静かな愛,初恋のひたむきさ");i++;
+data[i] = new Array ("1", "5", "クロッカス:嬉しい知らせ");i++;
+data[i] = new Array ("1", "6", "カンガルーポー:陽気,明朗");i++;
+data[i] = new Array ("1", "7", "チューリップ:博愛,永遠の愛情,愛の告白");i++;
+data[i] = new Array ("1", "8", "アザレア:愛されることを知った喜び");i++;
+data[i] = new Array ("1", "9", "スミレ:牧歌的な喜び");i++;
+data[i] = new Array ("1", "10", "フリージア:あどけなさ");i++;
+data[i] = new Array ("1", "11", "エピデンドラム:日々豊かに,判断力");i++;
+data[i] = new Array ("1", "12", "キンセンカ:輝かしい");i++;
+data[i] = new Array ("1", "13", "スズランエリカ:幸せな愛を,愛らしい妖精");i++;
+data[i] = new Array ("1", "14", "キャットテール:気まま,愛撫");i++;
+data[i] = new Array ("1", "15", "タチツボスミレ:悲しみ,慈愛");i++;
+data[i] = new Array ("1", "16", "ナワシロイチゴ:誘惑");i++;
+data[i] = new Array ("1", "17", "ナズナ:君を忘れない");i++;
+data[i] = new Array ("1", "18", "パフィオペディルム・スカクリイ:魅惑の舞い");i++;
+data[i] = new Array ("1", "19", "バーゼリア:情熱,熱心");i++;
+data[i] = new Array ("1", "20", "ストック:自由気まま,可憐");i++;
+data[i] = new Array ("1", "21", "ボケ:平凡");i++;
+data[i] = new Array ("1", "22", "グズマニア:萌える心");i++;
+data[i] = new Array ("1", "23", "アッツザクラ:敏感");i++;
+data[i] = new Array ("1", "24", "サフラン:嬉しい知らせ");i++;
+data[i] = new Array ("1", "25", "ウンナンロウバイ:高潔");i++;
+data[i] = new Array ("1", "26", "アマリリス:すばらしく美しい");i++;
+data[i] = new Array ("1", "27", "ギョリュウバイ:勇ましさ,繊細な美しさ");i++;
+data[i] = new Array ("1", "28", "ブルーレースフラワー:無言の愛");i++;
+data[i] = new Array ("1", "29", "ラナンキュラス:まぶしいほどの魅力");i++;
+data[i] = new Array ("1", "30", "カルセオラリア:調和,無邪気なロマンチスト");i++;
+data[i] = new Array ("1", "31", "オジギソウ:敏感");i++;
+data[i] = new Array ("2", "1", "マーガレット:秘めた愛,誠実,真実,恋占い");i++;
+data[i] = new Array ("2", "2", "フランネルフラワー:高潔");i++;
+data[i] = new Array ("2", "3", "タガラシ:意志を貫く");i++;
+data[i] = new Array ("2", "4", "ヒトリシズカ:静謐,隠された美");i++;
+data[i] = new Array ("2", "5", "オキナグサ:心の闇は内に隠して");i++;
+data[i] = new Array ("2", "6", "ナノハナ:協調性,調和");i++;
+data[i] = new Array ("2", "7", "ハナカイドウ:春の光りの暖かさ");i++;
+data[i] = new Array ("2", "8", "ホトケノザ:調和");i++;
+data[i] = new Array ("2", "9", "バンクシア・エリキフォリア:心地よい孤独");i++;
+data[i] = new Array ("2", "10", "ジンチョウゲ:薄れゆく愛");i++;
+data[i] = new Array ("2", "11", "オオイヌノフグリ:愛くるしい");i++;
+data[i] = new Array ("2", "12", "プリムラ・マラコイデス:情熱,伝言,優しい心");i++;
+data[i] = new Array ("2", "13", "ヒメオドリコソウ:愛嬌");i++;
+data[i] = new Array ("2", "14", "アワユキエリカ:告白");i++;
+data[i] = new Array ("2", "15", "ヘレボルス・オドルス:人とは違う美しさ");i++;
+data[i] = new Array ("2", "16", "セントポーリア:説得,親愛");i++;
+data[i] = new Array ("2", "17", "スノーフレーク:従順,素直");i++;
+data[i] = new Array ("2", "18", "イトキンポウゲ:心の繋がり");i++;
+data[i] = new Array ("2", "19", "ヘレボルス・リビドゥス:私を救って");i++;
+data[i] = new Array ("2", "20", "シャクナゲ:威厳,警戒,危険,荘厳");i++;
+data[i] = new Array ("2", "21", "アカバナマンサク:情熱");i++;
+data[i] = new Array ("2", "22", "ムクゲ:繊細美");i++;
+data[i] = new Array ("2", "23", "コブシ:負けん気の強さ");i++;
+data[i] = new Array ("2", "24", "サクラソウ:自然の美しさを失わない");i++;
+data[i] = new Array ("2", "25", "ニッコウキスゲ:晴れた日の喜び");i++;
+data[i] = new Array ("2", "26", "ムスカリ:通じ合う心");i++;
+data[i] = new Array ("2", "27", "オオアマナ:純粋,潔白");i++;
+data[i] = new Array ("2", "28", "シンビジウム:飾らない心,高貴な美人");i++;
+data[i] = new Array ("3", "1", "ハハコグサ:無償の愛");i++;
+data[i] = new Array ("3", "2", "アルメリア・カエスピトサ:思いやり");i++;
+data[i] = new Array ("3", "3", "モモ:天下無敵,チャーミング,私はあなたの虜");i++;
+data[i] = new Array ("3", "4", "ムラサキケマン:あなたの助けになる,助力,喜び");i++;
+data[i] = new Array ("3", "5", "ヤグルマギク:デリカシーをもつ");i++;
+data[i] = new Array ("3", "6", "オオデマリ:優雅なたしなみ");i++;
+data[i] = new Array ("3", "7", "ニリンソウ:ずっと離れない");i++;
+data[i] = new Array ("3", "8", "ブルースター:信じあう心");i++;
+data[i] = new Array ("3", "9", "アセビ:純真");i++;
+data[i] = new Array ("3", "10", "ノボリフジ:光が踊る");i++;
+data[i] = new Array ("3", "11", "ユキヤナギ:愛嬌,気まま");i++;
+data[i] = new Array ("3", "12", "レンゲソウ:心が和らぐ");i++;
+data[i] = new Array ("3", "13", "ミドリザクラ:優れた美");i++;
+data[i] = new Array ("3", "14", "ブルーデージー:恵まれている");i++;
+data[i] = new Array ("3", "15", "アンミ・マユス:静寂");i++;
+data[i] = new Array ("3", "16", "レウイシア・コチレドン:陽気なロマンチスト");i++;
+data[i] = new Array ("3", "17", "オオベニウチワ:煩悩");i++;
+data[i] = new Array ("3", "18", "ハナミズキ:私の思いを受けてください,華やかな恋");i++;
+data[i] = new Array ("3", "19", "シデコブシ:歓迎,友情");i++;
+data[i] = new Array ("3", "20", "ミツマタ:肉親の絆");i++;
+data[i] = new Array ("3", "21", "マンサク:霊感,ひらめき");i++;
+data[i] = new Array ("3", "22", "レンギョウ:かなえられた希望");i++;
+data[i] = new Array ("3", "23", "デルフィニウム:高貴");i++;
+data[i] = new Array ("3", "24", "カタクリ:謙遜,尊重される");i++;
+data[i] = new Array ("3", "25", "ツーリパ・プルケラ・リトルビューティ:移り気な愛");i++;
+data[i] = new Array ("3", "26", "シュンラン:誠実な愛情");i++;
+data[i] = new Array ("3", "27", "ヒベルティア・ペデュンクラタ:無邪気");i++;
+data[i] = new Array ("3", "28", "ソメイヨシノ:衰えぬ気品,誇り高い");i++;
+data[i] = new Array ("3", "29", "セイヨウタンポポ:真心の愛");i++;
+data[i] = new Array ("3", "30", "エニシダ:清潔,謙遜");i++;
+data[i] = new Array ("3", "31", "クサイチゴ:幸福な家庭");i++;
+data[i] = new Array ("4", "1", "シダレザクラ:ごまかし");i++;
+data[i] = new Array ("4", "2", "エイザンスミレ:茶目っ気");i++;
+data[i] = new Array ("4", "3", "ゼラニウム:君がいるから幸せ");i++;
+data[i] = new Array ("4", "4", "アネモネ:君を愛す");i++;
+data[i] = new Array ("4", "5", "ワスレナグサ:私を忘れないで");i++;
+data[i] = new Array ("4", "6", "タネツケバナ:勝利,不屈の心");i++;
+data[i] = new Array ("4", "7", "プリムラ・オブコニカ:幸福,富貴");i++;
+data[i] = new Array ("4", "8", "イカリソウ:君を離さない");i++;
+data[i] = new Array ("4", "9", "ヤマブキ:気品,崇高,待ちかねる");i++;
+data[i] = new Array ("4", "10", "ヤマザクラ:優れた美人");i++;
+data[i] = new Array ("4", "11", "ノハナショウブ:嬉しい知らせ");i++;
+data[i] = new Array ("4", "12", "ネメシア:正直");i++;
+data[i] = new Array ("4", "13", "ハクモクレン:自然への愛");i++;
+data[i] = new Array ("4", "14", "マメナシ:変わらぬ優しさ");i++;
+data[i] = new Array ("4", "15", "モクレン:自然への愛,持続性");i++;
+data[i] = new Array ("4", "16", "レンゲツツジ:あふれる向上心,情熱");i++;
+data[i] = new Array ("4", "17", "キショウブ:幸せを掴む");i++;
+data[i] = new Array ("4", "18", "アカツメクサ:少女の思い出");i++;
+data[i] = new Array ("4", "19", "イチリンソウ:追憶");i++;
+data[i] = new Array ("4", "20", "シバザクラ:大胆,尊大");i++;
+data[i] = new Array ("4", "21", "ミヤコワスレ:しばしの憩い");i++;
+data[i] = new Array ("4", "22", "ハゴロモジャスミン:優しさを集めて");i++;
+data[i] = new Array ("4", "23", "ニワゼキショウ:繫栄,豊富");i++;
+data[i] = new Array ("4", "24", "コデマリ:気立ての良い");i++;
+data[i] = new Array ("4", "25", "アミガサユリ:威厳");i++;
+data[i] = new Array ("4", "26", "エビネ:気取らぬ魅力");i++;
+data[i] = new Array ("4", "27", "シャガ:大胆,自由奔放");i++;
+data[i] = new Array ("4", "28", "バイカウツギ:思い出,気品");i++;
+data[i] = new Array ("4", "29", "ベニバナトキワマンサク:私から愛したい");i++;
+data[i] = new Array ("4", "30", "オニタビラコ:純愛");i++;
+data[i] = new Array ("5", "1", "プリムラ・ポリアンサ:一目惚れ , 陽気 , 上機嫌");i++;
+data[i] = new Array ("5", "2", "フロックス・ストロニフェラ:温和");i++;
+data[i] = new Array ("5", "3", "ミズバショウ:美しい思い出");i++;
+data[i] = new Array ("5", "4", "ヒャクニチソウ:奥ゆかしい,高尚");i++;
+data[i] = new Array ("5", "5", "ハナショウブ:うれしい知らせ");i++;
+data[i] = new Array ("5", "6", "ツルボ:誰よりも強い味方");i++;
+data[i] = new Array ("5", "7", "ボタン:王者の風格");i++;
+data[i] = new Array ("5", "8", "スイレン:心の純潔,純情,信頼");i++;
+data[i] = new Array ("5", "9", "キンラン:眠れる才能");i++;
+data[i] = new Array ("5", "10", "ペチュニア:あなたと一緒なら心が和らぐ");i++;
+data[i] = new Array ("5", "11", "ナスタチウム:光の導き");i++;
+data[i] = new Array ("5", "12", "アスチルベ:自由な心");i++;
+data[i] = new Array ("5", "13", "カキツバタ:凛々しさ");i++;
+data[i] = new Array ("5", "14", "オダマキ:自由");i++;
+data[i] = new Array ("5", "15", "ドクダミ:白い記憶,野生");i++;
+data[i] = new Array ("5", "16", "シャクヤク:真っ直ぐな想い");i++;
+data[i] = new Array ("5", "17", "カーネーション:純粋な愛情");i++;
+data[i] = new Array ("5", "18", "アヤメ:気品漂う");i++;
+data[i] = new Array ("5", "19", "マスデバリア:想いやり");i++;
+data[i] = new Array ("5", "20", "カタバミ:輝く心");i++;
+data[i] = new Array ("5", "21", "フジ:恋に酔う,決して離れない");i++;
+data[i] = new Array ("5", "22", "エンレイソウ:奥ゆかしい美しさ");i++;
+data[i] = new Array ("5", "23", "アマドコロ:元気を出して");i++;
+data[i] = new Array ("5", "24", "ワトソニア:豊かな心");i++;
+data[i] = new Array ("5", "25", "パンジー:もの想い,純愛");i++;
+data[i] = new Array ("5", "26", "フタリシズカ:いつまでも一緒");i++;
+data[i] = new Array ("5", "27", "シロツメクサ:約束,私を思って");i++;
+data[i] = new Array ("5", "28", "スズラン:再会,ほのかな幸せ");i++;
+data[i] = new Array ("5", "29", "アストランティア:愛の渇き");i++;
+data[i] = new Array ("5", "30", "シラー・ペルビアナ:熱愛,豊富,我慢強い");i++;
+data[i] = new Array ("5", "31", "キャットミント:自由な愛");i++;
+data[i] = new Array ("6", "1", "ナツシロギク:集う喜び,楽しむ");i++;
+data[i] = new Array ("6", "2", "ササユリ:清浄,上品");i++;
+data[i] = new Array ("6", "3", "アジサイ:あなたは美しいが冷淡だ");i++;
+data[i] = new Array ("6", "4", "ウツギ:乙女の香り");i++;
+data[i] = new Array ("6", "5", "ハマナス:幸せの誓い");i++;
+data[i] = new Array ("6", "6", "ムラサキツユクサ:貴ぶ,尊敬");i++;
+data[i] = new Array ("6", "7", "クチナシ:私はあなたにふさわしい");i++;
+data[i] = new Array ("6", "8", "ジャスミン:愛らしさ,優美");i++;
+data[i] = new Array ("6", "9", "スイートピー:デリケート,ほのかな喜び");i++;
+data[i] = new Array ("6", "10", "テイカカズラ:依存");i++;
+data[i] = new Array ("6", "11", "カンパニュラ:誠実");i++;
+data[i] = new Array ("6", "12", "ライラック:愛の芽生え");i++;
+data[i] = new Array ("6", "13", "キバナジギタリス:熱愛");i++;
+data[i] = new Array ("6", "14", "ハコネウツギ:移り気");i++;
+data[i] = new Array ("6", "15", "ヤマボウシ:友情");i++;
+data[i] = new Array ("6", "16", "ナツツバキ:愛らしさ");i++;
+data[i] = new Array ("6", "17", "フウセンカズラ:あなたとともに,飛び立ち");i++;
+data[i] = new Array ("6", "18", "リアトリス:向上心");i++;
+data[i] = new Array ("6", "19", "ノアザミ:権利,私をもっと知ってください");i++;
+data[i] = new Array ("6", "20", "ハナトラノオ:あなたとの約束");i++;
+data[i] = new Array ("6", "21", "オカトラノオ:騎士道");i++;
+data[i] = new Array ("6", "22", "キキョウソウ:優しい愛");i++;
+data[i] = new Array ("6", "23", "ビロードアオイ:慈悲");i++;
+data[i] = new Array ("6", "24", "バーベナ:魅了する");i++;
+data[i] = new Array ("6", "25", "ヒルガオ:優しい愛情,和やかさ");i++;
+data[i] = new Array ("6", "26", "タイツリソウ:魅惑する勇ましさ");i++;
+data[i] = new Array ("6", "27", "トケイソウ:情熱的に生きる");i++;
+data[i] = new Array ("6", "28", "マツヨイグサ:浴後の美人");i++;
+data[i] = new Array ("6", "29", "ジャーマンアイリス:高貴な欲望");i++;
+data[i] = new Array ("6", "30", "ビヨウヤナギ:嫉妬 , 薄れ行く愛");i++;
+data[i] = new Array ("7", "1", "ハンゲショウ:内に秘めた情熱,内気");i++;
+data[i] = new Array ("7", "2", "キンギョソウ:涼しげ,健やか");i++;
+data[i] = new Array ("7", "3", "アガパンサス:憂い");i++;
+data[i] = new Array ("7", "4", "ネジバナ:旅立ち");i++;
+data[i] = new Array ("7", "5", "ラベンダー:あなたを待っています,期待");i++;
+data[i] = new Array ("7", "6", "ツユクサ:変わらぬ思い");i++;
+data[i] = new Array ("7", "7", "ホオズキ:自然美,不思議");i++;
+data[i] = new Array ("7", "8", "ハス:純粋に揺れ動く");i++;
+data[i] = new Array ("7", "9", "ギボウシ:心の落ち着き,沈静");i++;
+data[i] = new Array ("7", "10", "ホタルブクロ:愛らしさ,忠実");i++;
+data[i] = new Array ("7", "11", "タニウツギ:豊麗");i++;
+data[i] = new Array ("7", "12", "ゼニアオイ:自然を恵む");i++;
+data[i] = new Array ("7", "13", "ヘビイチゴ:可憐");i++;
+data[i] = new Array ("7", "14", "カワラナデシコ:可憐な純情");i++;
+data[i] = new Array ("7", "15", "ヌマトラノオ:平静");i++;
+data[i] = new Array ("7", "16", "ハナシュクシャ:あなたを信頼します");i++;
+data[i] = new Array ("7", "17", "ワックスフラワー:艶めく眼差し");i++;
+data[i] = new Array ("7", "18", "フレンチ・マリーゴールド:信頼,可憐な愛情");i++;
+data[i] = new Array ("7", "19", "ゲッカビジン:繊細,甘美,快楽");i++;
+data[i] = new Array ("7", "20", "トルコキキョウ:優美");i++;
+data[i] = new Array ("7", "21", "ヤマユリ:威厳,甘美");i++;
+data[i] = new Array ("7", "22", "ダイアンサス:純粋な愛,無邪気");i++;
+data[i] = new Array ("7", "23", "オミナエシ:あの人が気がかり");i++;
+data[i] = new Array ("7", "24", "オオマツヨイグサ:人の良さ");i++;
+data[i] = new Array ("7", "25", "ブーゲンビレア・スペクタビリス:あなたは魅力に満ちている");i++;
+data[i] = new Array ("7", "26", "クサノオウ:思い出");i++;
+data[i] = new Array ("7", "27", "マクワウリ:古くからの繋がり");i++;
+data[i] = new Array ("7", "28", "ムシトリナデシコ:罠");i++;
+data[i] = new Array ("7", "29", "ダリア:有能,真心");i++;
+data[i] = new Array ("7", "30", "ニチニチソウ:積み重ね,しるし");i++;
+data[i] = new Array ("7", "31", "ヤナギラン:集中する");i++;
+data[i] = new Array ("8", "1", "アサガオ:明日も爽やかに");i++;
+data[i] = new Array ("8", "2", "セイヨウノコギリソウ:真心を持って,戦い");i++;
+data[i] = new Array ("8", "3", "ヒナゲシ:贅沢");i++;
+data[i] = new Array ("8", "4", "パイナップルリリー:完璧");i++;
+data[i] = new Array ("8", "5", "ヒマワリ:熱愛,光輝く,明るい");i++;
+data[i] = new Array ("8", "6", "ノウゼンカズラ:崇高,気高い");i++;
+data[i] = new Array ("8", "7", "アスター:落ち着いた明るさ");i++;
+data[i] = new Array ("8", "8", "キリシマツツジ:燃え上がる愛");i++;
+data[i] = new Array ("8", "9", "パンパスグラス:光輝,人気");i++;
+data[i] = new Array ("8", "10", "リュウカデンドロン:物言わぬ恋");i++;
+data[i] = new Array ("8", "11", "ベニバナ:あなたは特別な人");i++;
+data[i] = new Array ("8", "12", "クロユリ:愛を誓う");i++;
+data[i] = new Array ("8", "13", "マツムシソウ:不幸な恋,わたしはすべてを失った");i++;
+data[i] = new Array ("8", "14", "ユウスゲ:麗しき姿");i++;
+data[i] = new Array ("8", "15", "キクイモモドキ:細やかな気配り");i++;
+data[i] = new Array ("8", "16", "カライトソウ:深い思い,繊細");i++;
+data[i] = new Array ("8", "17", "ネムノキ:この手を伸ばせば");i++;
+data[i] = new Array ("8", "18", "タチアオイ:懸命,清涼");i++;
+data[i] = new Array ("8", "19", "ミズヒキ:慶事,祭礼");i++;
+data[i] = new Array ("8", "20", "センニチコウ:情の豊かさを無くさない");i++;
+data[i] = new Array ("8", "21", "サギソウ:淡白,気まぐれ");i++;
+data[i] = new Array ("8", "22", "シモツケソウ:控えめな可愛さ,純情");i++;
+data[i] = new Array ("8", "23", "ワレモコウ:愛慕,変化");i++;
+data[i] = new Array ("8", "24", "ペリステリア・エラタ:百花繚乱");i++;
+data[i] = new Array ("8", "25", "フヨウ:しとやかな恋人");i++;
+data[i] = new Array ("8", "26", "ナツエビネ:誠実");i++;
+data[i] = new Array ("8", "27", "ホウセンカ:快活,私に触れないで");i++;
+data[i] = new Array ("8", "28", "キキョウ:不屈の心");i++;
+data[i] = new Array ("8", "29", "ケイトウ:家庭的,思慮深い");i++;
+data[i] = new Array ("8", "30", "ベロニカ・スピカータ:人のよさ,堅固,貞節");i++;
+data[i] = new Array ("8", "31", "リンドウ:あなたの悲しみに寄りそう");i++;
+data[i] = new Array ("9", "1", "スパティフィルム:用心,正しい");i++;
+data[i] = new Array ("9", "2", "ルリマツリ:ひそかな情熱");i++;
+data[i] = new Array ("9", "3", "サルビア:尊敬,知恵");i++;
+data[i] = new Array ("9", "4", "レンゲショウマ:伝統美");i++;
+data[i] = new Array ("9", "5", "ベンケイソウ:穏やか");i++;
+data[i] = new Array ("9", "6", "クルマユリ:多才な人");i++;
+data[i] = new Array ("9", "7", "ゲンノショウコ:心の強さ");i++;
+data[i] = new Array ("9", "8", "イワヒバ:負けない心");i++;
+data[i] = new Array ("9", "9", "キク:高貴,高尚,真実,私を信じてください,あなたを愛します");i++;
+data[i] = new Array ("9", "10", "シュウカイドウ:可憐な欲望");i++;
+data[i] = new Array ("9", "11", "ホトトギス:秘めた思い,永遠にあなたのもの");i++;
+data[i] = new Array ("9", "12", "テッセン:高潔");i++;
+data[i] = new Array ("9", "13", "マンジュシャゲ:情熱");i++;
+data[i] = new Array ("9", "14", "ツリガネニンジン:詩的な愛");i++;
+data[i] = new Array ("9", "15", "ススキ:秋風に想いを乗せて");i++;
+data[i] = new Array ("9", "16", "ヨウシュヤマゴボウ:野生,元気,内縁の妻");i++;
+data[i] = new Array ("9", "17", "ジャノメエリカ:優美,希望");i++;
+data[i] = new Array ("9", "18", "アザミ:独立");i++;
+data[i] = new Array ("9", "19", "ウツボグサ:優しく癒す");i++;
+data[i] = new Array ("9", "20", "ローズマリー:思い出,記憶");i++;
+data[i] = new Array ("9", "21", "クズ:思慮深い");i++;
+data[i] = new Array ("9", "22", "ブッソウゲ:情熱,魅力いっぱい");i++;
+data[i] = new Array ("9", "23", "バラ:愛情,模範");i++;
+data[i] = new Array ("9", "24", "ダイダイ:相思相愛");i++;
+data[i] = new Array ("9", "25", "カマツカ:真心");i++;
+data[i] = new Array ("9", "26", "オオバコ:足跡を残す");i++;
+data[i] = new Array ("9", "27", "コスモス:乙女の純真");i++;
+data[i] = new Array ("9", "28", "ヒモゲイトウ:粘り強さ");i++;
+data[i] = new Array ("9", "29", "ヤマハギ:思案,柔軟な精神");i++;
+data[i] = new Array ("9", "30", "シュウメイギク:野心,自然体");i++;
+data[i] = new Array ("10", "1", "モミジアオイ:温和");i++;
+data[i] = new Array ("10", "2", "キバナコスモス:絢爛");i++;
+data[i] = new Array ("10", "3", "ランタナ:協力,合意");i++;
+data[i] = new Array ("10", "4", "オニユリ:愉快");i++;
+data[i] = new Array ("10", "5", "イタドリ:回復");i++;
+data[i] = new Array ("10", "6", "キンモクセイ:どこでも成功");i++;
+data[i] = new Array ("10", "7", "シオン:喜びをください");i++;
+data[i] = new Array ("10", "8", "サラシナショウマ:愛嬌,無邪気");i++;
+data[i] = new Array ("10", "9", "ウイキョウ:称賛に値する");i++;
+data[i] = new Array ("10", "10", "スプレーマム:清らかな愛,わずかな愛");i++;
+data[i] = new Array ("10", "11", "ユリ:威厳,純潔,無垢");i++;
+data[i] = new Array ("10", "12", "ガーベラ:神秘,成功");i++;
+data[i] = new Array ("10", "13", "エキナケア・パラドクサ:優しさ");i++;
+data[i] = new Array ("10", "14", "ルドベキア・トリコロル:公平");i++;
+data[i] = new Array ("10", "15", "メボウキ:好意・好感");i++;
+data[i] = new Array ("10", "16", "ハルウコン:あなたの姿に酔いしれる");i++;
+data[i] = new Array ("10", "17", "ネリネ:麗しい微笑み,また会う日を楽しみに");i++;
+data[i] = new Array ("10", "18", "ミソハギ:悲哀");i++;
+data[i] = new Array ("10", "19", "アキノキリンソウ:安心");i++;
+data[i] = new Array ("10", "20", "キリンソウ:警戒");i++;
+data[i] = new Array ("10", "21", "バンダ・コエルレア:願いを込めて");i++;
+data[i] = new Array ("10", "22", "オモダカ:高潔");i++;
+data[i] = new Array ("10", "23", "アケビ:才能");i++;
+data[i] = new Array ("10", "24", "アゲラタム:信頼");i++;
+data[i] = new Array ("10", "25", "シンフォリカルポス:いつまでも献身的に");i++;
+data[i] = new Array ("10", "26", "ヤブラン:忍耐,隠された心");i++;
+data[i] = new Array ("10", "27", "ツリフネソウ:華麗");i++;
+data[i] = new Array ("10", "28", "アフリカン・マリーゴールド:信頼");i++;
+data[i] = new Array ("10", "29", "カナリアナス:偽り");i++;
+data[i] = new Array ("10", "30", "チョコレートコスモス:恋の終わり");i++;
+data[i] = new Array ("10", "31", "ムラサキセンブリ:すべてよし");i++;
+data[i] = new Array ("11", "1", "ソバ:一生懸命,誠実");i++;
+data[i] = new Array ("11", "2", "フウセントウワタ:楽しい生活");i++;
+data[i] = new Array ("11", "3", "ハツコイソウ:淡い初恋,秘密,約束を守る");i++;
+data[i] = new Array ("11", "4", "ムラサキシキブ:愛され上手");i++;
+data[i] = new Array ("11", "5", "オンシジウム・オブリザツム:約束を守る");i++;
+data[i] = new Array ("11", "6", "グラスペディア:永遠の幸福,心の扉をたたく");i++;
+data[i] = new Array ("11", "7", "ヨモギギク:幸福,平和");i++;
+data[i] = new Array ("11", "8", "フジバカマ:あの日を思い出す,躊躇");i++;
+data[i] = new Array ("11", "9", "ハナキリン:気分に任せて");i++;
+data[i] = new Array ("11", "10", "ガマ:従順");i++;
+data[i] = new Array ("11", "11", "ヤブツバキ:わが運命は君の手にあり");i++;
+data[i] = new Array ("11", "12", "ダイモンジソウ:甘え上手");i++;
+data[i] = new Array ("11", "13", "デンドロビウム・アグレガツム:真心");i++;
+data[i] = new Array ("11", "14", "アルストロメリア:未来への憧れ");i++;
+data[i] = new Array ("11", "15", "ミゾソバ:純情");i++;
+data[i] = new Array ("11", "16", "サザンカ:素直,飾らない心");i++;
+data[i] = new Array ("11", "17", "スターチス:変わらぬ心,永遠に変わらない");i++;
+data[i] = new Array ("11", "18", "ヒメジョオン:素朴で清楚");i++;
+data[i] = new Array ("11", "19", "カミガヤツリ:愛の手紙");i++;
+data[i] = new Array ("11", "20", "ツワブキ:いつも笑顔で変わらない");i++;
+data[i] = new Array ("11", "21", "イチョウ:長寿");i++;
+data[i] = new Array ("11", "22", "シコンノボタン:勝利,約束");i++;
+data[i] = new Array ("11", "23", "ピラカンサ・ローズデール:慈悲");i++;
+data[i] = new Array ("11", "24", "イヌタデ:お役に立ちたい");i++;
+data[i] = new Array ("11", "25", "ハコベ:初恋の思い出");i++;
+data[i] = new Array ("11", "26", "シクラメン:内気,遠慮");i++;
+data[i] = new Array ("11", "27", "ノゲイトウ:おもむくままに");i++;
+data[i] = new Array ("11", "28", "サンダーソニア:祈り");i++;
+data[i] = new Array ("11", "29", "ベゴニア:片思い");i++;
+data[i] = new Array ("11", "30", "カスミソウ:清い心");i++;
+data[i] = new Array ("12", "1", "ヘリコニア・アウランティアカ:風変わりな人");i++;
+data[i] = new Array ("12", "2", "シネラリア:純愛,希望");i++;
+data[i] = new Array ("12", "3", "コオニユリ:賢者");i++;
+data[i] = new Array ("12", "4", "ハボタン:利益");i++;
+data[i] = new Array ("12", "5", "カラー:素敵な美しさ");i++;
+data[i] = new Array ("12", "6", "ユキノシタ:愛情,好感");i++;
+data[i] = new Array ("12", "7", "サンタンカ:神様の贈り物");i++;
+data[i] = new Array ("12", "8", "カンツバキ:申し分のない愛らしさ");i++;
+data[i] = new Array ("12", "9", "グロリオサ:天分");i++;
+data[i] = new Array ("12", "10", "ユキツバキ:気取らない美しさ");i++;
+data[i] = new Array ("12", "11", "カランコエ:とっておきの");i++;
+data[i] = new Array ("12", "12", "ハルジオン:追想の愛");i++;
+data[i] = new Array ("12", "13", "ピンクッション:どこでも成功を");i++;
+data[i] = new Array ("12", "14", "ゴクラクチョウカ:女王の輝き");i++;
+data[i] = new Array ("12", "15", "カトレア・トリアナエ:優雅な女性");i++;
+data[i] = new Array ("12", "16", "ブバルディア:清楚,羨望");i++;
+data[i] = new Array ("12", "17", "シーマニア:元気");i++;
+data[i] = new Array ("12", "18", "ホワイトセージ:家族愛,尊敬");i++;
+data[i] = new Array ("12", "19", "ベニバナツメクサ:約束,素朴なかわいらしさ");i++;
+data[i] = new Array ("12", "20", "パイナップル:完全無欠");i++;
+data[i] = new Array ("12", "21", "プロテア:王者の風格");i++;
+data[i] = new Array ("12", "22", "ポインセチア:祝福する,私の心は燃えている");i++;
+data[i] = new Array ("12", "23", "シャコバサボテン:勝利,有能");i++;
+data[i] = new Array ("12", "24", "ヒイラギ:先見の明");i++;
+data[i] = new Array ("12", "25", "ミニバラ:満足");i++;
+data[i] = new Array ("12", "26", "ファレノプシス・アフロディテ:幸福が飛んでやってくる");i++;
+data[i] = new Array ("12", "27", "ウメ:あでやかさ");i++;
+data[i] = new Array ("12", "28", "プリムラ・シネンシス:気どらない愛,素朴");i++;
+data[i] = new Array ("12", "29", "パキスタキス・ルテア:輝きだす道へ");i++;
+data[i] = new Array ("12", "30", "ニホンズイセン:長い道のり");i++;
+data[i] = new Array ("12", "31", "デージー:素直に好きな気持ち");i++;
+$("#text").html("<br><b>"+mon+"/"+da+"の花は…</b><br>");
+    for(i=0; i<data.length; i++){
+        if( (data[i][0]==mon) && (data[i][1]==da)){
+        $("#text2").html("✿"+data[i][2]+"<br>");
+        }
+    }
+});
+
+
+const pull = document.querySelector("#pull");
+pull.onclick = function(){
+    //乱数をつくる
+    const num = Math.ceil(Math.random()*15);
+    //春に植えるお勧めな花占い
+    if(num==1){
+        echo.innerHTML = "✿アサガオ";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】7月から10月";
+    }
+    if(num==2){
+        echo.innerHTML = "✿アゲラタム";
+        echo1.innerHTML = "・【種まき時期】4月から5月【開花時期】7月から10月";
+    }
+    if(num==3){
+        echo.innerHTML = "✿インパチェンス";
+        echo1.innerHTML = "・【種まき時期】3月から5月【開花時期】6月から10月";
+    }
+    if(num==4){
+        echo.innerHTML = "✿ケイトウ";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】7月から10月";
+    }
+    if(num==5){
+        echo.innerHTML = "✿コスモス";
+        echo1.innerHTML = "・【種まき時期】4月から8月【開花時期】6月から11月";
+    }
+    if(num==6){
+        echo.innerHTML = "✿コリウス";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】6月から10月";
+    }
+    if(num==7){
+        echo.innerHTML = "✿マリーゴールド";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】6月から10月";
+    }
+    if(num==8){
+        echo.innerHTML = "✿ペチュニア";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】6月から10月";
+    }
+    if(num==9){
+        echo.innerHTML = "✿ジニア";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】6月から10月";
+    }
+    if(num==10){
+        echo.innerHTML = "✿ニコチアナ";
+        echo1.innerHTML = "・【種まき時期】4月から5月【開花時期】7月から10月";
+    }
+    if(num==11){
+        echo.innerHTML = "✿アサリナ";
+        echo1.innerHTML = "・【種まき時期】4月から5月【開花時期】7月から10月";
+    }
+    if(num==12){
+        echo.innerHTML = "✿メランポディウム";
+        echo1.innerHTML = "・【種まき時期】3月から4月【開花時期】5月から10月";
+    }
+    if(num==13){
+        echo.innerHTML = "✿ニチニチソウ";
+        echo1.innerHTML = "・【種まき時期】4月から5月【開花時期】6月から11月";
+    }
+    if(num==14){
+        echo.innerHTML = "✿トレニア";
+        echo1.innerHTML = "・【種まき時期】4月から5月【開花時期】6月から10月";
+    }
+    if(num==15){
+        echo.innerHTML = "✿センニチコウ";
+        echo1.innerHTML = "・【種まき時期】4月から6月【開花時期】6月から10月";
+    }
+}
+
+
+//1.Save クリックイベント //
+$("#save").on("click",function(){
+    const key = $("#key").val();//インプットした#keyの入力したデータを取ってくる。
+    const value = $("#memo").val();
+    localStorage.setItem(key,value);//タイトルをkey名に、メモをvalueにしてlocalStrageに保存。
+    //一覧表示に追加
+    const html = '<tr><th>'+key+'</th><td>'+value+'</td></tr>';//key名とvalue名を入れる。
+    $("#list").append(html);//appendで#listというテーブルに差し込む。
+});
+
+
+
+//2.clear クリックイベント
+$("#clear").on("click",function(){
+    localStorage.clear();//localStorageの中身を消す。
+    $("#list").empty();//デーブルの中身を消す。
+});
+
+
+
+//3.ページ読み込み：保存データ取得表示
+for(let i=0; i<localStorage.length; i++){//i=0で初期化 localStorageの個数分だけループする。
+    //key(何番)でkey名を取得
+    const key = localStorage.key(i);//0番目からkeyを取ってくる。
+    const value = localStorage.getItem(key);//key名をここに渡してそのkey名のvalueを取ってくる。
+    //一覧表示
+    const html = '<tr><th>'+key+'</th><td>'+value+'</td></tr>';
+    $("#list").append(html);
+}
+</script>
+<footer></footer>
+</body>
+</html>
